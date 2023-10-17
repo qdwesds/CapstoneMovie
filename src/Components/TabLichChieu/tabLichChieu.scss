@@ -1,0 +1,17 @@
+.tabHeThongRap {
+  .ant-tabs-content-holder {
+    // max-height: 516px;
+  }
+  .ant-tabs-nav {
+    max-height: 516px;
+  }
+}
+.tabHeThongRap .ant-tabs-nav .ant-tabs-nav-operations {
+  display: none;
+}
+
+@media (max-width: 930px) {
+  .tabLichChieu {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}

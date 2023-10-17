@@ -1,0 +1,53 @@
+.trapezoid {
+  border-bottom: 50px solid gray;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 80%;
+  opacity: 0.3;
+  filter: drop-shadow(0px 128px 75px #000000);
+  -webkit-filter: drop-shadow(0px 128px 75px #000000);
+}
+//? ghế thường
+.ghe {
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 8px;
+  background-color: rgb(123, 122, 122);
+  border: none;
+  color: #fff;
+}
+//? ghế đã đăt
+.gheDaDat {
+  background-color: red;
+  cursor: no-drop;
+}
+//? ghế đang đặt
+.gheDangDat {
+  background-color: rgb(18, 176, 18) !important;
+}
+//? ghế vip
+.gheVip {
+  background-color: orange;
+}
+
+//? ghê đc chính mình đặt
+.gheDaDuocDat {
+  background-color: #e7dfdf;
+  -webkit-box-shadow: 3px 1px 4px 6px #dbabab;
+  box-shadow: 1px 1px 3px 4px bisque;
+  color: orange !important;
+  border: 1px solid black;
+}
+
+@media (max-width: 500px) {
+  .responsiveGhe {
+    grid-template-columns: 1fr !important;
+  }
+  .responsiveGhe .responsiveDatVe {
+    max-width: 1120px !important;
+    margin: 0 auto !important;
+  }
+}
