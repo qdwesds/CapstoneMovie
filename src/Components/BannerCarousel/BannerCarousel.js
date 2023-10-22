@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Carousel } from "antd";
-import "./bannerCarousel.scss";
+import "./BannerCarousel.scss";
 import TrailerModal from "../TrailerModal/TrailerModal";
 
 const contentStyle = {
