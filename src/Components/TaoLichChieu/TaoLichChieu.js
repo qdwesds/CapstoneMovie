@@ -4,7 +4,6 @@ import { quanLyRapServ } from "../../services/quanLyRapServ";
 import { useFormik } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
-import "./taoLichChieu.scss";
 import { quanLyDatVeServ } from "../../services/quanLyDatVeServ";
 
 const TaoLichChieu = () => {

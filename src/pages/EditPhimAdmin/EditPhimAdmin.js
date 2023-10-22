@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import EditPhim from "../../Components/EditPhim/EditPhim";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { layThongTinPhimApi } from "../../redux/slice/phimSlice";
+import { getMovieInfoApi } from "../../redux/slice/phimSlice";
 
 const EditPhimAdmin = () => {
   const params = useParams();
   // console.log(params);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(layThongTinPhimApi(params.id));
+    dispatch(getMovieInfoApi(params.id));
   }, []);
   return (
     <div className="bg-white p-10 space-y-3 ">

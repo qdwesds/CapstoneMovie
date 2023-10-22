@@ -7,7 +7,7 @@ import {
   setLoadingEnd,
   setLoadingStarted,
 } from "../../redux/slice/loadingSlice";
-import { layDanhSachPhimApi } from "../../redux/slice/phimSlice";
+import { getAllMovieApi } from "../../redux/slice/phimSlice";
 import { quanLyPhimServ } from "../../services/quanLyPhimServ";
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(setLoadingStarted());
     quanLyPhimServ
-      .layDanhSachBanner()
+      .getAllBanner()
       .then((result) => {
         // console.log(result);
         setListBanner(result.data.content);
@@ -26,7 +26,7 @@ const Home = () => {
         console.log(error);
         dispatch(setLoadingEnd());
       });
-    dispatch(layDanhSachPhimApi());
+    dispatch(getAllMovieApi());
   }, []);
   return (
     <>

@@ -33,7 +33,7 @@ const TabHeThongRap = () => {
     };
   }, []);
   return (
-    <div className=" mx-auto tabHeThongRap py-10 max-w-5xl">
+    <div id="cumRap" className=" mx-auto tabHeThongRap py-10 max-w-5xl">
       <Tabs
         tabPosition={positionTab}
         items={listLogoRap.map((item, index) => {

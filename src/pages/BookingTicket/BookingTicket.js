@@ -8,7 +8,7 @@ import KetQuaDatVe from "../../Components/KetQuaDatVe/KetQuaDatVe";
 import { quayLaiTab } from "../../redux/slice/quanLyDatVeSlice";
 const { TabPane } = Tabs;
 
-const CheckOut = () => {
+const BookingTicket = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLocal = JSON.parse(localStorage.getItem("user"));
@@ -20,7 +20,6 @@ const CheckOut = () => {
   }, [navigate, userLocal]);
   const { isLoading } = useSelector((state) => state.loadingSlice);
   const { tabActive } = useSelector((state) => state.quanLyDatVeSlice);
-
   return (
     <>
       {isLoading ? <Loading /> : <></>}
@@ -32,10 +31,10 @@ const CheckOut = () => {
             dispatch(quayLaiTab(key));
           }}
         >
-          <TabPane tab="01 Chọn ghế và thanh toán" key={1}>
+          <TabPane tab="Chọn ghế và thanh toán" key={1}>
             <DatVe />
           </TabPane>
-          <TabPane tab="02 Kết quả đặt vé" key={2}>
+          <TabPane tab="Lịch sử đặt vé" key={2}>
             <KetQuaDatVe />
           </TabPane>
         </Tabs>
@@ -44,4 +43,4 @@ const CheckOut = () => {
   );
 };
 
-export default CheckOut;
+export default BookingTicket;

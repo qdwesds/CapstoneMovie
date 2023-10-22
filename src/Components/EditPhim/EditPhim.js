@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import { DatePicker, Form, Input, Radio, Switch, Rate } from "antd";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
+import { DatePicker, Form, Input, Switch, Rate } from "antd";
 import moment from "moment";
 import { quanLyPhimServ } from "../../services/quanLyPhimServ";
 import { useNavigate } from "react-router-dom";
-import { layThongTinPhimApi } from "../../redux/slice/phimSlice";
+import { getMovieInfoApi } from "../../redux/slice/phimSlice";
 
 const EditPhim = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { thongTinPhim } = useSelector((state) => state.phimSlice);
-  // console.log(thongTinPhim);
-  // console.log(arrPhim);
   const [componentSize, setComponentSize] = useState("default");
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
@@ -45,10 +43,10 @@ const EditPhim = () => {
         }
       }
       quanLyPhimServ
-        .CapNhatPhimUpload(data)
+        .updateMovie(data)
         .then((result) => {
           console.log(result);
-          dispatch(layThongTinPhimApi());
+          dispatch(getMovieInfoApi());
           navigate("/admin/list-phim");
         })
         .catch((error) => {
@@ -92,13 +90,6 @@ const EditPhim = () => {
           maxWidth: 600,
         }}
       >
-        <Form.Item label="Form Size" name="size">
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
         <Form.Item label="Tên phim">
           <Input
             name="tenPhim"

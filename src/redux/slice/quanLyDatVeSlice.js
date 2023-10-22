@@ -2,23 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { quanLyDatVeServ } from "../../services/quanLyDatVeServ";
 
 const initialState = {
-  danhSachGheDangDat: [
-    // {
-    //   maGhe: 51263,
-    //   tenGhe: "23",
-    //   maRap: 475,
-    //   loaiGhe: "Thuong",
-    //   stt: "23",
-    //   giaVe: 75000,
-    //   daDat: false,
-    //   taiKhoanNguoiDat: null,
-    // },
-  ],
-  tabActive: "1",
+  danhSachGheDangDat: [],
 };
 
 const quanLyDatVeSlice = createSlice({
-  name: "quanLyDatVeSlice",
+  name: "datVe",
   initialState,
   reducers: {
     gheDuocChon: (state, action) => {
@@ -54,7 +42,7 @@ export const { gheDuocChon, chuyenTab, quayLaiTab } = quanLyDatVeSlice.actions;
 
 export default quanLyDatVeSlice.reducer;
 
-//thunk
+// thunk
 export const datVeApi = createAsyncThunk(
   "datVe/quanLyDatVeSlice",
   async (thongTinDatVe) => {

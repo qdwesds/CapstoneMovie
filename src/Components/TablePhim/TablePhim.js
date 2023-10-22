@@ -4,36 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { message, Popconfirm } from "antd";
 import { quanLyPhimServ } from "../../services/quanLyPhimServ";
-import { layDanhSachPhimApi } from "../../redux/slice/phimSlice";
+import { getAllMovieApi } from "../../redux/slice/phimSlice";
 
-// const data = [
-//   {
-//     key: "1",
-//     name: "John Brown",
-//     age: 32,
-//     address: "New York No. 1 Lake Park",
-//   },
-//   {
-//     key: "2",
-//     name: "Jim Green",
-//     age: 42,
-//     address: "London No. 1 Lake Park",
-//   },
-//   {
-//     key: "3",
-//     name: "Joe Black",
-//     age: 32,
-//     address: "Sydney No. 1 Lake Park",
-//   },
-//   {
-//     key: "4",
-//     name: "Jim Red",
-//     age: 32,
-//     address: "London No. 2 Lake Park",
-//   },
-// ];
+
 const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
+  console.log(pagination, filters, sorter, extra);
 };
 
 const TablePhim = () => {
@@ -117,7 +92,7 @@ const TablePhim = () => {
                 .xoaPhim(record.maPhim)
                 .then((result) => {
                   console.log(result);
-                  dispatch(layDanhSachPhimApi());
+                  dispatch(getAllMovieApi());
                   messageApi.success("Xoá phim thành công");
                 })
                 .catch((error) => {

@@ -1,27 +1,23 @@
 import https from "./config";
 const maNhom = "GP01";
+
 export const quanLyPhimServ = {
-  layDanhSachBanner: async () => {
-    return await https.get("/api/QuanLyPhim/LayDanhSachBanner");
+  getAllBanner: () => {
+    return https.get("/api/QuanLyPhim/LayDanhSachBanner");
   },
-  layDanhSachPhim: async (tenPhim = "") => {
-    if (tenPhim.trim() !== "") {
-      return await https.get(
-        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}&tenPhim=${tenPhim}`
-      );
-    }
-    return await https.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}`);
+  getAllMovie: () => {
+    return https.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}`);
   },
-  themPhimUploadHinh: async (formData) => {
-    return await https.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData);
+  themPhimUploadHinh: (data) => {
+    return https.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, data);
   },
-  layThongTinPhim: async (maPhim) => {
-    return await https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
+  getMovieInfo: (maPhim) => {
+    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
   },
-  CapNhatPhimUpload: async (formData) => {
-    return await https.post(`/api/QuanLyPhim/CapNhatPhimUpload`, formData);
+  updateMovie: (data) => {
+    return https.post(`/api/QuanLyPhim/CapNhatPhimUpload`, data);
   },
-  xoaPhim: async (maPhim) => {
-    return await https.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
+  xoaPhim: (maPhim) => {
+    return https.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   },
 };

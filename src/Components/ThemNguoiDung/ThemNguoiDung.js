@@ -30,7 +30,7 @@ const ThemNguoiDung = () => {
       taiKhoan: "",
       email: "",
       matKhau: "",
-      soDt: "",
+      sdt: "",
       hoTen: "",
       maNhom: "",
       maLoaiNguoiDung: "",
@@ -38,7 +38,7 @@ const ThemNguoiDung = () => {
     onSubmit: (values) => {
       console.log(values);
       quanLyNguoiDungServ
-        .themNguoiDung(values)
+        .addUsers(values)
         .then((result) => {
           console.log(result);
           messageApi.success("Thêm người dùng thành công");
@@ -52,12 +52,12 @@ const ThemNguoiDung = () => {
         });
     },
     validationSchema: Yup.object().shape({
-      taiKhoan: Yup.string().required("Vui lòng nhập tài khoản"),
-      email: Yup.string().required("Vui lòng nhập email"),
-      matKhau: Yup.string().required("Vui lòng nhập mật khẩu"),
-      soDt: Yup.string().required("Vui lòng nhập số điện thoại"),
-      hoTen: Yup.string().required("Vui lòng nhập họ và tên"),
-      maNhom: Yup.string().required("Vui lòng nhập mã nhóm"),
+      taiKhoan: Yup.string().required("Vui lòng nhập thông tin"),
+      email: Yup.string().required("Vui lòng nhập thông tin"),
+      matKhau: Yup.string().required("Vui lòng nhập thông tin"),
+      sdt: Yup.string().required("Vui lòng nhập thông tin"),
+      hoTen: Yup.string().required("Vui lòng nhập thông tin"),
+      maNhom: Yup.string().required("Vui lòng nhập thông tin"),
     }),
   });
   const {
@@ -78,6 +78,12 @@ const ThemNguoiDung = () => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4 text-black">
           <div className="relative z-0 w-full mb-6 group">
+          <label
+              htmlFor="taiKhoan"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Tài khoản
+            </label>
             <input
               type="text"
               name="taiKhoan"
@@ -90,14 +96,15 @@ const ThemNguoiDung = () => {
             {touched.taiKhoan && errors.taiKhoan && (
               <span className="text-red-500">{errors.taiKhoan}</span>
             )}
-            <label
-              htmlFor="taiKhoan"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Tài khoản
-            </label>
+            
           </div>
           <div className="relative z-0 w-full mb-6 group">
+          <label
+              htmlFor="email"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Email
+            </label>
             <input
               type="text"
               name="email"
@@ -110,14 +117,15 @@ const ThemNguoiDung = () => {
             {touched.email && errors.email && (
               <span className="text-red-500">{errors.email}</span>
             )}
-            <label
-              htmlFor="email"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Email
-            </label>
+            
           </div>
           <div className="relative z-0 w-full mb-6 group">
+          <label
+              htmlFor="matKhau"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Mật khẩu
+            </label>
             <input
               type="text"
               name="matKhau"
@@ -130,34 +138,36 @@ const ThemNguoiDung = () => {
             {errors.matKhau && touched.matKhau && (
               <span className="text-red-500">{errors.matKhau}</span>
             )}
-            <label
-              htmlFor="matKhau"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Mật khẩu
-            </label>
+            
           </div>
           <div className="relative z-0 w-full mb-6 group">
-            <input
-              type="text"
-              name="soDt"
-              id="soDt"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.soDt}
-            />
-            {errors.soDt && touched.soDt && (
-              <span className="text-red-500">{errors.soDt}</span>
-            )}
-            <label
-              htmlFor="soDt"
+          <label
+              htmlFor="sdt"
               className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Số điện thoại
             </label>
+            <input
+              type="text"
+              name="sdt"
+              id="sdt"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.sdt}
+            />
+            {errors.sdt && touched.sdt && (
+              <span className="text-red-500">{errors.sdt}</span>
+            )}
+            
           </div>
           <div className="relative z-0 w-full mb-6 group">
+          <label
+              htmlFor="hoTen"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Họ và tên
+            </label>
             <input
               type="text"
               name="hoTen"
@@ -170,14 +180,15 @@ const ThemNguoiDung = () => {
             {errors.hoTen && touched.hoTen && (
               <span className="text-red-500">{errors.hoTen}</span>
             )}
-            <label
-              htmlFor="hoTen"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Họ và tên
-            </label>
+            
           </div>
           <div className="relative z-0 w-full mb-6 group">
+          <label
+              htmlFor="maNhom"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Mã nhóm
+            </label>
             <input
               type="text"
               name="maNhom"
@@ -190,12 +201,7 @@ const ThemNguoiDung = () => {
             {touched.maNhom && errors.maNhom && (
               <span className="text-red-500">{errors.maNhom}</span>
             )}
-            <label
-              htmlFor="maNhom"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Mã nhóm
-            </label>
+            
           </div>
           <div className="relative z-0 w-full mb-6 group ">
             <Select

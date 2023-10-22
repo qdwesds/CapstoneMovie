@@ -9,11 +9,11 @@ const initialState = {
 };
 
 const phimSlice = createSlice({
-  name: "phimSlice",
+  name: "phim",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(layDanhSachPhimApi.fulfilled, (state, action) => {
+    builder.addCase(getAllMovieApi.fulfilled, (state, action) => {
       //   console.log(action);
       state.arrPhim = action.payload;
     });
@@ -21,7 +21,7 @@ const phimSlice = createSlice({
       // console.log(action);
       state.detailPhim = action.payload;
     });
-    builder.addCase(layThongTinPhimApi.fulfilled, (state, action) => {
+    builder.addCase(getMovieInfoApi.fulfilled, (state, action) => {
       // console.log(action);
       // console.log(state);
       state.thongTinPhim = action.payload;
@@ -33,27 +33,27 @@ export const {} = phimSlice.actions;
 
 export default phimSlice.reducer;
 
-//todo :action thunk
-export const layDanhSachPhimApi = createAsyncThunk(
-  "phimSlice/layDanhSachPhimApi",
-  async (tenPhim = "") => {
-    const result = await quanLyPhimServ.layDanhSachPhim(tenPhim);
-    // console.log(result);
-    return result.data.content;
+// thunk
+export const getAllMovieApi = createAsyncThunk(
+  "phim/getAllMovie",
+  async () => {
+    const res = await quanLyPhimServ.getAllMovie();
+    // console.log(res);
+    return res.data.content;
   }
 );
 export const layThongTinLichChieuPhimApi = createAsyncThunk(
-  "phimSlice/layThongTinLichChieuPhimApi",
+  "phim/layThongTinLichChieuPhimApi",
   async (maPhim) => {
     const result = await quanLyRapServ.layThongTinLichChieuPhim(maPhim);
-    // console.log(result);
+    // console.log(res);
     return result.data.content;
   }
 );
-export const layThongTinPhimApi = createAsyncThunk(
-  "phimSlice/layThongTinPhimApi",
+export const getMovieInfoApi = createAsyncThunk(
+  "phim/getMovieInfo",
   async (maPhim) => {
-    const result = await quanLyPhimServ.layThongTinPhim(maPhim);
+    const result = await quanLyPhimServ.getMovieInfo(maPhim);
     return result.data.content;
   }
 );

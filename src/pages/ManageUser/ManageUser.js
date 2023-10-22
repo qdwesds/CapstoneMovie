@@ -6,20 +6,20 @@ import { Input } from "antd";
 import { quanLyNguoiDungServ } from "../../services/quanLyNguoiDungServ";
 const { Search } = Input;
 
-const UserAdmin = () => {
+const ManageUser = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(layDanhSachNguoiDungApi());
   }, []);
   return (
     <div className="bg-white p-10 space-y-5">
-      <h2 className="font-medium text-3xl text-red-500">Quản lý người dùng</h2>
+      <h2 className="font-bold text-3xl">Quản lý người dùng</h2>
       <Search
         placeholder="Nhập tìm kiếm"
         onSearch={(value) => {
           console.log(value);
           quanLyNguoiDungServ
-            .timKiemNguoiDung(value)
+            .searchUsers(value)
             .then((result) => {
               console.log(result);
               dispatch(layDanhSachNguoiDungApi());
@@ -35,4 +35,4 @@ const UserAdmin = () => {
   );
 };
 
-export default UserAdmin;
+export default ManageUser;

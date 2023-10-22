@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { TeamOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, message, theme } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
-import "./adminTemplate.scss";
 import { useSelector } from "react-redux";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -69,16 +68,19 @@ const AdminTemplates = () => {
         <Header
           style={{
             background: colorBgContainer,
+            lineHeight: "30px",
+            height: "60px",
+            paddingTop: "10px"
           }}
         >
-          <div className="text-right mr-10 mt-4">
+          <div className="text-right ">
             <span className="mr-3">{user.hoTen}</span>
             <button
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/");
               }}
-              className="bg-red-500 text-white rounded px-3 p-2 cursor-pointer hover:bg-red-600 duration-500"
+              className="bg-red-500 text-white px-3 py-1 rounded cursor-pointer hover:bg-red-600 duration-500"
             >
               Đăng xuất
             </button>

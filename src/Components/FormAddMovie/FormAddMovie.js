@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DatePicker, Form, Input, Radio, Switch, Rate } from "antd";
+import { DatePicker, Form, Input, Switch, Rate } from "antd";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { quanLyPhimServ } from "../../services/quanLyPhimServ";
@@ -77,13 +77,6 @@ const FormAddMovie = () => {
         maxWidth: 600,
       }}
     >
-      <Form.Item label="Form Size" name="size">
-        <Radio.Group>
-          <Radio.Button value="small">Small</Radio.Button>
-          <Radio.Button value="default">Default</Radio.Button>
-          <Radio.Button value="large">Large</Radio.Button>
-        </Radio.Group>
-      </Form.Item>
       <Form.Item label="Tên phim">
         <Input
           name="tenPhim"
@@ -120,6 +113,7 @@ const FormAddMovie = () => {
       <Form.Item label="Ngày chiếu">
         <DatePicker
           name="ngayKhoiChieu"
+          onBlur={handleBlur}
           format={"DD/MM/YYYY"}
           onChange={(day, dayString) => {
             // console.log(dayString);
@@ -177,7 +171,7 @@ const FormAddMovie = () => {
       <Form.Item label="">
         <button
           type="submit"
-          className="bg-green-500 px-3 py-2 rounded text-white hover:bg-green-600 duration-500 "
+          className="bg-blue-500 px-3 py-2 rounded text-white hover:bg-blue-700 duration-500 "
         >
           Thêm phim
         </button>

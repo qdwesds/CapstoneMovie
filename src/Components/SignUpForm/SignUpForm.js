@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { quanLyNguoiDungServ } from "../../services/quanLyNguoiDungServ";
 import { message } from "antd";
 
-const RegristerForm = () => {
+const SignUpForm = () => {
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -21,7 +21,7 @@ const RegristerForm = () => {
     onSubmit: (values) => {
       //   console.log(values);
       quanLyNguoiDungServ
-        .dangKi(values)
+        .dangKy(values)
         .then((result) => {
           //   console.log(result);
           messageApi.success("Đăng kí tài khoản thành công");
@@ -36,27 +36,22 @@ const RegristerForm = () => {
         });
     },
     validationSchema: Yup.object().shape({
-      taiKhoan: Yup.string().required("Vui lòng nhập tên tài khoản"),
-      matKhau: Yup.string().required("Vui lòng nhập mật khẩu"),
+      taiKhoan: Yup.string().required("Vui lòng không để trống"),
+      matKhau: Yup.string().required("Vui lòng không để trống"),
       email: Yup.string()
-        .required("Vui lòng nhập email")
+        .required("Vui lòng không để trống")
         .matches(
-          /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/,
+          /^[a-z][a-z0-9_.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/,
           "Vui lòng nhập đúng định dạng email"
         ),
       soDt: Yup.string()
-        .required("Vui lòng nhập số điện thoại")
+        .required("Vui lòng không để trống")
         .matches(
           /(84|0[3|5|7|8|9])+([0-9]{8})\b/,
-          "Vui lòng nhập đúng định dạng số điện thoại"
+          "Số điện thoại không đúng định dạng"
         ),
-      maNhom: Yup.string().required("Vui lòng nhập mã nhóm"),
-      hoTen: Yup.string()
-        .required("Vui lòng nhập họ tên")
-        .matches(
-          /^[a-zA-Z'-'\sáàảãạăâắằấầặẵẫậéèẻ ẽẹếềểễệóòỏõọôốồổỗộ ơớờởỡợíìỉĩịđùúủũụưứ� �ửữựÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠ ƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼ� ��ỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞ ỠỢỤỨỪỬỮỰỲỴÝỶỸửữựỵ ýỷỹ]*$/,
-          "Vui lòng nhập đúng định dạng tên"
-        ),
+      maNhom: Yup.string().required("Vui lòng không để trống"),
+      hoTen: Yup.string().required("Vui lòng không để trống"),
     }),
   });
   const {
@@ -222,15 +217,15 @@ const RegristerForm = () => {
                   type="submit"
                   className="w-full text-white bg-red-500 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-500 dark:focus:ring-primary-800"
                 >
-                  Đăng kí
+                  Đăng ký
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Already have an account?{" "}
+                  Bạn đã có tài khoản? 
                   <Link
                     to={"/log-in"}
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
-                    Login here
+                    Đăng nhập
                   </Link>
                 </p>
               </form>
@@ -242,4 +237,4 @@ const RegristerForm = () => {
   );
 };
 
-export default RegristerForm;
+export default SignUpForm;

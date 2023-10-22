@@ -21,7 +21,7 @@ const LoginForm = () => {
         .then((result) => {
           //   console.log(result);
           saveLocal("user", result.data.content);
-          messageApi.success("đăng nhập thành công");
+          messageApi.success("Đăng nhập thành công");
           setTimeout(() => {
             navigate("/");
           }, 1000);
@@ -112,12 +112,12 @@ const LoginForm = () => {
                   Đăng nhập
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Don’t have an account yet?{" "}
+                  Bạn chưa có tài khoản?
                   <Link
                     to={"/sign-up"}
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
-                    Đăng kí
+                    Đăng ký
                   </Link>
                 </p>
               </form>

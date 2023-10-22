@@ -18,3 +18,18 @@
     }
   }
 }
+
+.ant-carousel .slick-dots-bottom {
+    bottom: 20px;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+  background-color: red;
+}
+
+.ant-carousel .slick-dots li button {
+  background-color: gray;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}

@@ -3,15 +3,15 @@ import { Tabs } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { quayLaiTab } from "../../redux/slice/quanLyDatVeSlice";
 import KetQuaDatVe from "../../Components/KetQuaDatVe/KetQuaDatVe";
-import ThongTinTaiKhoan from "../../Components/ThongTinTaiKhoan/ThongTinTaiKhoan";
 
 const Profile = () => {
   const { tabActive } = useSelector((state) => state.quanLyDatVeSlice);
   const dispatch = useDispatch();
 
   return (
-    <div className="container mx-auto mt-28 px-5 lg:px-20 pb-20">
+    <div className="container mx-auto px-5 pb-20">
       <Tabs
+      className="mt-20"
         defaultActiveKey={tabActive}
         activeKey={tabActive}
         tabPosition={"top"}

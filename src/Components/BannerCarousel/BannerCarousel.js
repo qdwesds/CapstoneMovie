@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { Carousel } from "antd";
-import "./BannerCarousel.scss";
+import "./bannerCarousel.scss";
 import TrailerModal from "../TrailerModal/TrailerModal";
+
 const contentStyle = {
   margin: 0,
   height: "500px",
   color: "#fff",
   position: "relative",
+  //   lineHeight: "160px",
+  //   textAlign: "center",
+  //   background: "#364d79",
 };
+
 const trailerBanner = [
   <iframe
     width="100%"
@@ -21,8 +26,8 @@ const trailerBanner = [
   <iframe
     width="100%"
     height="400"
-    src="https://www.youtube.com/embed/L-XhraxUsAs"
-    title="Lật Mặt 6: Tấm Vé Định Mệnh | Trailer Chính thức | Netflix"
+    src="https://www.youtube.com/embed/2EnP2tVC00Q"
+    title='Phim "Lật Mặt 6: Tấm Vé Định Mệnh" Trailer | KC 28.04.2023'
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen
@@ -37,64 +42,71 @@ const trailerBanner = [
     allowfullscreen
   ></iframe>,
 ];
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block" }}
-      onClick={onClick}
-    >
-      <i className="fa-solid fa-chevron-right"></i>
-    </div>
-  );
-}
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block" }}
-      onClick={onClick}
-    >
-      <i className="fa-solid fa-chevron-left"></i>
-    </div>
-  );
-}
-
 const BannerCarousel = ({ listBanner }) => {
-  // console.log(listBanner);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [contentModal, setContentModal] = useState("");
-
   const onChange = (currentSlide) => {
-    // console.log(currentSlide);
+    console.log(currentSlide);
+  };
+
+  const SampleNextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block"}}
+        onClick={onClick}
+      >
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+    );
+  };
+
+  const SamplePrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block"}}
+        onClick={onClick}
+      >
+        <i class="fa-solid fa-arrow-left"></i>
+      </div>
+    );
+  };
+  const removeContentModal = () => {
+    setContentModal("");
   };
   return (
     <>
       <Carousel
+      className="mt-14"
         id="banner"
         afterChange={onChange}
         arrows={true}
         nextArrow={<SampleNextArrow />}
         prevArrow={<SamplePrevArrow />}
+        
       >
         {listBanner.map((item, index) => {
-          const { hinhAnh } = item;
+          console.log(item);
+          // các slide chiều cao chưa giống nhau, nên có khoảng trắng
           return (
             <div key={index}>
               <div style={contentStyle}>
                 <img
-                  className="w-full h-full object-cover"
-                  src={hinhAnh}
-                  alt={hinhAnh}
+                  className="h-full w-full object-cover"
+                  src={item.hinhAnh}
+                  alt=""
                 />
                 <div
                   onClick={() => {
+                    // mở modal
                     setIsModalOpen(true);
+                    // set dữ liệu cho contentModal dựa trên index của slide đang có
                     setContentModal(trailerBanner[index]);
                   }}
-                  className="icon_play absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[90px] hover:scale-150 duration-500"
+                  className="icon_play absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-6xl"
                 >
                   <i className="fa-regular fa-circle-play"></i>
                 </div>
@@ -105,10 +117,13 @@ const BannerCarousel = ({ listBanner }) => {
       </Carousel>
       <TrailerModal
         isModalOpen={isModalOpen}
+        // phương thức onCancel gọi setState cho giá trị false để ẩn modal
         onCancel={() => {
           setIsModalOpen(false);
+          setContentModal("");
         }}
         contentModal={contentModal}
+        removeContentModal={removeContentModal}
       />
     </>
   );

@@ -55,19 +55,11 @@ const KetQuaDatVe = () => {
   };
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          navigate("/");
-        }}
-        className="bg-green-500 rounded px-4 py-2 text-white font-bold hover:bg-green-600 cursor-pointer duration-500"
-      >
-        Quay lại trang chủ
-      </button>
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
+    <>
+      <div className="text-gray-600 body-font">
+        <div className="container px-5 py-10 mx-auto">
           <div className="flex flex-col text-center w-full mb-20">
-            <h1 className="sm:text-4xl text-4xl font-bold title-font mb-4 text-orange-500">
+            <h1 className="sm:text-4xl text-4xl font-bold title-font mb-4 ">
               Lịch sử đặt vé khách hàng
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
@@ -76,8 +68,18 @@ const KetQuaDatVe = () => {
           </div>
           <div className="flex flex-wrap -m-2">{renderTicketItem()}</div>
         </div>
-      </section>
-    </div>
+      </div>
+      <div className="text-center">
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className="bg-black px-4 py-2 text-white font-bold cursor-pointer duration-500"
+        >
+          Quay lại trang chủ
+        </button>
+      </div>
+    </>
   );
 };
 

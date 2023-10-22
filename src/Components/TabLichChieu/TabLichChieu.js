@@ -41,6 +41,7 @@ const TabLichChieu = ({ maHeThongRap }) => {
   return (
     <>
       <Tabs
+      id=""
         tabPosition={positionTab}
         items={cumRap.map((item, index) => {
           //   console.log(item);
@@ -85,15 +86,15 @@ const TabLichChieu = ({ maHeThongRap }) => {
                                     );
                                   }}
                                   key={index}
-                                  className="py-4 px-2 bg-gray-100 border border-gray-400 rounded font-bold space-x-2 cursor-pointer"
+                                  className="py-2 px-4 bg-gray-100 border border-gray-400 rounded font-bold space-x-2 text-center"
                                 >
-                                  <span className="text-green-400">
+                                  <span className="text-green-500">
                                     {moment(lichChieu.ngayChieuGioChieu).format(
-                                      "DD-MM-YYYY "
+                                      "DD-MM-YYYY"
                                     )}
                                   </span>
-                                  ~
-                                  <span className="text-orange-400">
+                                  <span>~</span>
+                                  <span className="text-orange-500">
                                     {moment(lichChieu.ngayChieuGioChieu).format(
                                       "hh:mm"
                                     )}

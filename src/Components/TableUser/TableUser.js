@@ -1,6 +1,6 @@
 import React from "react";
-import { Popconfirm, Space, Table, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import { Popconfirm, Space, Table, message } from "antd";
 import { quanLyNguoiDungServ } from "../../services/quanLyNguoiDungServ";
 import { useNavigate } from "react-router-dom";
 import { layDanhSachNguoiDungApi } from "../../redux/slice/userSlice";
@@ -14,7 +14,6 @@ const TableUser = () => {
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
   const { danhSachNguoiDung } = useSelector((state) => state.userSlice);
-  // console.log(danhSachNguoiDung);
   const columns = [
     {
       title: "STT",
@@ -64,7 +63,7 @@ const TableUser = () => {
             description="Bạn có muốn xoá người dùng không không?"
             onConfirm={() => {
               quanLyNguoiDungServ
-                .xoaNguoiDung(record.taiKhoan)
+                .deleteUsers(record.taiKhoan)
                 .then((result) => {
                   console.log(result);
                   messageApi.success(result.data.content);

@@ -4,7 +4,7 @@ import EditUser from "../../Components/EditUser/EditUser";
 const EditUserAdmin = () => {
   return (
     <div className="bg-white p-10 space-y-3">
-      <h1 className="text-red-500 text-2xl">Chỉnh sửa người dùng</h1>
+      <h1 className="font-bold text-3xl mb-10">Chỉnh sửa người dùng</h1>
       <EditUser />
     </div>
   );
